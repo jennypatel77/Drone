@@ -1,4 +1,4 @@
-package drone;
+package drone.application;
 
 //import  static com.interview.drone.entities.DroneConstants.ROUND_TRIP;
 

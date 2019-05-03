@@ -16,7 +16,7 @@ public class UtilService {
 		return cal.getTime();
 	}
 
-	public Date addTime2(Date currentTime, Date timePassed) {
+	public Date addTime(Date currentTime, Date timePassed) {
 
 		Calendar currentCal = Calendar.getInstance();
 		currentCal.setTime(currentTime);

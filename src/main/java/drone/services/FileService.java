@@ -1,23 +1,24 @@
 package drone.services;
 
-import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
-import drone.entities.DroneConstants;
 import drone.entities.Order;
 
 public class FileService {
-	
+
 	UtilService utilService = new UtilService();
 	OrderService orderService = new OrderService();
 
 	public List<Order> readOrdersFromFile(Path path) throws IOException {
 		List<Order> orders = new ArrayList<>();
-		List<String> lines = Files.readAllLines(path);
+		List<String> lines = Files.readAllLines(path.toAbsolutePath());
 		lines.forEach(line -> {
 			orders.add(createOrderFromLine(line));
 		});
@@ -42,28 +43,22 @@ public class FileService {
 		return order;
 	}
 
-	public String writeFile(List<Order> orders, int nps) throws IOException {
+	public void writeFile(List<Order> orders, int nps) throws IOException {
 
-		FileWriter fileWriter = null;
-		String fileLocation = "C:/Users/patelj/Downloads/outputorders.txt";
-
+		Calendar cal = Calendar.getInstance();
+		String fileLocation = "C:\\Users\\Jenny\\Desktop\\outputorders-" + cal.getTimeInMillis()+ ".txt";
 		try {
-			fileWriter = new FileWriter(fileLocation);
-
+			Path path = Files.createFile(Paths.get(fileLocation));
 			for (Order order : orders) {
-				fileWriter.write(order.getOrderNumber() + " " + DroneConstants.SDF.format(order.getDateIn())
-						+ System.getProperty("line.separator"));
+				Files.write(path.toAbsolutePath(), order.toOutputString().getBytes(), StandardOpenOption.APPEND);
 			}
 
-			fileWriter.write(String.format("NPS:  %s", nps));
+			Files.write(path, String.format("NPS:  %s", nps).getBytes(), StandardOpenOption.APPEND);
 
 		} catch (IOException e) {
 			e.printStackTrace();
 			throw new IOException(e.getMessage());
-		} finally {
-			fileWriter.close();
 		}
-
-		return fileLocation;
+		return;
 	}
 }

@@ -129,5 +129,10 @@ public class Order implements Comparable<Order> {
 		return "Order [orderNumber=" + orderNumber + ", coordinates=" + coordinates + ", dateIn=" + dateIn
 				+ ", dateOut=" + dateOut + ", oneWay=" + oneWay + ", roundTrip=" + roundTrip + "]";
 	}
+	
+	public String toOutputString() {
+		return new String(this.getOrderNumber() + " " + DroneConstants.SDF.format(this.getDateIn())
+		+ System.getProperty("line.separator"));
+	}
 
 }

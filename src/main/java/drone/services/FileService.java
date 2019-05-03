@@ -22,7 +22,7 @@ public class FileService {
 		try {
 		lines = Files.readAllLines(path.toAbsolutePath());
 		} catch (IOException e) {
-			System.out.println( "Please check if the location you provided is correct");
+			System.out.println( "ERROR: Please check if the location you provided is correct");
 			throw e;
 		}
 		
@@ -33,7 +33,7 @@ public class FileService {
 		
 		return orders;
 		} catch (ArrayIndexOutOfBoundsException e) {
-			System.out.println( "Please check you input file");
+			System.out.println( "ERROR: Please check you input file");
 			throw e;
 		}
 	}

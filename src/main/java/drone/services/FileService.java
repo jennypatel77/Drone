@@ -18,18 +18,29 @@ public class FileService {
 
 	public List<Order> readOrdersFromFile(Path path) throws IOException {
 		List<Order> orders = new ArrayList<>();
-		List<String> lines = Files.readAllLines(path.toAbsolutePath());
+		List<String> lines;
+		try {
+		lines = Files.readAllLines(path.toAbsolutePath());
+		} catch (IOException e) {
+			System.out.println( "Please check if the location you provided is correct");
+			throw e;
+		}
+		
+		try {
 		lines.forEach(line -> {
 			orders.add(createOrderFromLine(line));
 		});
+		
 		return orders;
+		} catch (ArrayIndexOutOfBoundsException e) {
+			System.out.println( "Please check you input file");
+			throw e;
+		}
 	}
 
 	private Order createOrderFromLine(String line) {
-		System.out.println("Reading Order Line " + line);
 		Order order = new Order();
 		String[] params = line.split(" ");
-		System.out.println(params[0] + ", " + params[1] + ", " + params[2]);
 		order.setOrderNumber(params[0]);
 
 		String[] time = params[2].split(":");
@@ -38,17 +49,16 @@ public class FileService {
 
 		order.setCoordinates(orderService.convertStringToCoordinate(params[1]));
 
-		System.out.println("Read Order " + order.toString());
-
 		return order;
 	}
 
-	public void writeFile(List<Order> orders, int nps) throws IOException {
+	public String writeFile(List<Order> orders, int nps) throws IOException {
 
 		Calendar cal = Calendar.getInstance();
 		String fileLocation = "C:\\Users\\Jenny\\Desktop\\outputorders-" + cal.getTimeInMillis()+ ".txt";
+		Path path;
 		try {
-			Path path = Files.createFile(Paths.get(fileLocation));
+			path = Files.createFile(Paths.get(fileLocation));
 			for (Order order : orders) {
 				Files.write(path.toAbsolutePath(), order.toOutputString().getBytes(), StandardOpenOption.APPEND);
 			}
@@ -59,6 +69,6 @@ public class FileService {
 			e.printStackTrace();
 			throw new IOException(e.getMessage());
 		}
-		return;
+		return path.toString();
 	}
 }

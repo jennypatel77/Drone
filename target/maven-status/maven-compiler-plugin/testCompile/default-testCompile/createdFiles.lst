@@ -1,4 +1,3 @@
-drone\services\OrderServiceTest.class
 drone\services\DroneServiceTest.class
-drone\services\ReadFileTest.class
+drone\services\OrderServiceTest.class
 drone\services\UtilsServiceTest.class

@@ -15,31 +15,15 @@ public class Order implements Comparable<Order> {
 
 	}
 	
-	// used to read the input
-		public Order(String orderNumber, Coordinate coordinates, Date dateIn, Long oneWay) {
+	// used for unit testing
+		public Order(String orderNumber, Coordinate coordinates, Date dateIn, Date dateOut, Long oneWay) {
 			super();
 			this.orderNumber = orderNumber;
 			this.coordinates = coordinates;
 			this.dateIn = dateIn;
+			this.dateOut = dateOut;
 			this.oneWay = oneWay;
 		}
-
-	// used to read the input
-	public Order(String orderNumber, Coordinate coordinates, Date dateIn, Long oneWay, Long roundTrip) {
-		super();
-		this.orderNumber = orderNumber;
-		this.coordinates = coordinates;
-		this.dateIn = dateIn;
-		this.oneWay = oneWay;
-		this.roundTrip = roundTrip;
-	}
-
-	// used to generate output
-	public Order(String orderNumber, Date dateOut) {
-		super();
-		this.orderNumber = orderNumber;
-		this.dateOut = dateOut;
-	}
 
 	public String getOrderNumber() {
 		return orderNumber;
@@ -131,7 +115,7 @@ public class Order implements Comparable<Order> {
 	}
 	
 	public String toOutputString() {
-		return new String(this.getOrderNumber() + " " + DroneConstants.SDF.format(this.getDateIn())
+		return new String(this.getOrderNumber() + " " + DroneConstants.SDF.format(this.getDateOut())
 		+ System.getProperty("line.separator"));
 	}
 

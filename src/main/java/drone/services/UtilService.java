@@ -23,7 +23,7 @@ public class UtilService {
 		Calendar passedCal = Calendar.getInstance();
 		passedCal.setTime(timePassed);
 		currentCal.setTimeZone(TimeZone.getDefault());
-		currentCal.set(Calendar.HOUR_OF_DAY, currentCal.get(Calendar.HOUR) + passedCal.get(Calendar.HOUR));
+		currentCal.set(Calendar.HOUR_OF_DAY, currentCal.get(Calendar.HOUR_OF_DAY) + passedCal.get(Calendar.HOUR_OF_DAY));
 		currentCal.set(Calendar.MINUTE, currentCal.get(Calendar.MINUTE) + passedCal.get(Calendar.MINUTE));
 		currentCal.set(Calendar.SECOND, currentCal.get(Calendar.SECOND) + passedCal.get(Calendar.SECOND));
 		return currentCal.getTime();

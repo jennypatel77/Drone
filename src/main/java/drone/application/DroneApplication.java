@@ -45,15 +45,15 @@ public class DroneApplication {
 
 			// drone is off hours
 			if (!currentTime.equals(startTime) && (currentTime.before(startTime) || currentTime.after(endTime))) {
-				return;
+				break;
 			}
 
 			availableOrders = orderService.getAvailableOrders(fileOrders, availableOrders, currentTime); //get orders that were already placed
 
 			if (availableOrders.isEmpty()) { // drone can rest since there are no orders yet to be fulfilled in current time
 				Collections.sort(fileOrders);
-				currentTime.setTime(fileOrders.get(0).getDateIn().getTime()); // grab the earliest order and increment
-																				// the current time to that
+				currentTime.setTime(fileOrders.get(0).getDateIn().getTime() + 1); // grab the earliest order and increment
+				continue; 												          // the current time to that
 			}
 			Collections.sort(availableOrders); //sort the already placed orders based on nearest distance to warehouse
 			orderOnDrone = availableOrders.get(0);
@@ -64,9 +64,9 @@ public class DroneApplication {
 			fileOrders.remove(orderOnDrone);
 		}
 
-		fileService.writeFile(outputOrders, orderService.calculateNPS(outputOrders));
+		String outputFile = fileService.writeFile(outputOrders, orderService.calculateNPS(outputOrders));
+		System.out.println("Your result could be found at: " + outputFile);
 
-		System.out.println("NPS " + orderService.calculateNPS(outputOrders));
 	}
 
 }

@@ -1,3 +1,37 @@
+
+Attachment README.txt added.Conversation opened. 2 messages. 1 message unread.
+
+Skip to content
+Using Gmail with screen readers
+Enable desktop notifications for Gmail.
+   OK  No thanks
+
+1 of 228
+Readme file
+Inbox
+x
+
+Jenny Patel
+Attachments10:09 AM (21 minutes ago)
+Warm Regards, Jenny Patel
+
+Aidan Reilly-Seivert <reillya@foliofinancial.com>
+Attachments
+10:23 AM (6 minutes ago)
+to me
+
+minor updates!
+
+From: Jenny Patel <jennypatel77@gmail.com>
+Sent: Friday, May 3, 2019 10:09:20 AM
+To: Aidan Reilly-Seivert
+Subject: Readme file
+ 
+
+Warm Regards,
+Jenny Patel
+Attachments area
+
 Drone Delivery Challenge
 Overview
 Implement an algorithm to schedule drone-carried deliveries to customers in a small town. The
@@ -6,27 +40,31 @@ deliveries originate at the warehouse and are carried by a drone to a customer l
 "ground speed" is exactly one horizontal or vertical grid block per minute.
 Your homework assignment is to design and write a drone launch scheduling program that
 maximizes the net promoter score (NPS) amongst drone-delivery customers. Net promoter
-score is defined as the percentage of promoters minus the percentage of detractors. See the
-diagram below to understand the relationship between delivery speed and customer feedback
-responses. The town owns one drone, which is allowed to operate from 6 a.m. until 10 p.m.
+score is defined as the percentage of promoters minus the percentage of detractors. 
+The town owns one drone, which is allowed to operate from 6 a.m. until 10 p.m.
 
 Solution:
 
-Step 1: Grab all the orders that were already placed in current time. 
-Step 2: Sort these orders based on their distance from the warehouse using the coordinate provided with each order.
-Step 3: Pick the shortest order and dispatch drone.
+Step 1: Grab all the orders that have already been placed at current time. 
+Step 2: Sort these orders based on their distance from the warehouse using the coordinates provided with each order.
+Step 3: Pick the shortest delivery order and dispatch drone.
 Step 4: Increment the current time to time when drone comes back after fulfilling the order
-Step 5: Remove the order that was fulfilled from the orignal list of orders.
+Step 5: Remove the order that was fulfilled from the original list of orders.
 Repeat through step 1-5
 
-Special Case: If all the orders were not fulfilled but also there are no orders placed in current time
+Special Case: If the drone has no orders to fill at current time
 Step 1.a: Sort the orders that are still not placed based on time.
-Step 1.b: Make drone rest at ware house untill first order comes in.
+Step 1.b: Make drone rest at ware house until first order comes in.
+Step 1.c: Immediately dispatch drone when first order arrives
+
+Special Case: If two orders have the same delivery time when being evaluated
+Step 1.a: Pick the order with the lowest order number
 
 Assumptions:
 1. Only one file of orders come in per day.
 2. There is only one functional drone.
-3. When orders file is provided as input, it is aware of further orders too.
+3. When orders file is provided as input, it is aware of futher orders too.
+4. Drone is not bound by the grid and can fly diagonally 
 
 
 Instructions to run the project:
@@ -34,6 +72,3 @@ Instructions to run the project:
 2. Launch GIT BASH
 3. Execute java -jar drone-challenge-0.0.1-SNAPSHOT-jar-with-dependencies.jar "file full location"
 4. If successful it will return with: Your result could be found at: 'output file location'
-
-
-

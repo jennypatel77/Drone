@@ -1,37 +1,3 @@
-
-Attachment README.txt added.Conversation opened. 2 messages. 1 message unread.
-
-Skip to content
-Using Gmail with screen readers
-Enable desktop notifications for Gmail.
-   OK  No thanks
-
-1 of 228
-Readme file
-Inbox
-x
-
-Jenny Patel
-Attachments10:09 AM (21 minutes ago)
-Warm Regards, Jenny Patel
-
-Aidan Reilly-Seivert <reillya@foliofinancial.com>
-Attachments
-10:23 AM (6 minutes ago)
-to me
-
-minor updates!
-
-From: Jenny Patel <jennypatel77@gmail.com>
-Sent: Friday, May 3, 2019 10:09:20 AM
-To: Aidan Reilly-Seivert
-Subject: Readme file
- 
-
-Warm Regards,
-Jenny Patel
-Attachments area
-
 Drone Delivery Challenge
 Overview
 Implement an algorithm to schedule drone-carried deliveries to customers in a small town. The
